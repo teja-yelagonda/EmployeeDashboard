@@ -1,0 +1,32 @@
+<h2>Employee Details</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Address</th>
+    </tr>
+    <tr *ngFor="let employee of employees">
+        <td>{{employee.id}}</td>
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.dob}}</td>
+        <td>{{employee.gender}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.phoneNumber}}</td>
+        <td>{{employee.address}}</td>
+    </tr>
+</table>
+<input [(ngModel)]="deleteEmp" placeholder="Enter empId to be deleted">
+<button (click)="deleteEmpById()">Delete</button>
+<br><br>
+<button (click)="DownLoadEmployeeDetails()">DownloadDetails</button>
+<br><br>
+<input type="file" (change)="OnSelectedFile($event)">
+<button (click)="UploadFile()">Upload</button>
+<p *ngIf="errorMessage">{{errorMessage}}</p>

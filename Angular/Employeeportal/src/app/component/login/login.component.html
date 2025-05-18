@@ -1,0 +1,49 @@
+<h1 class="title">Login</h1>
+
+<div class="fullscreen-center">
+    <div class="form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="email" formControlName="username" placeholder="Enter Username here">
+                <div class="display-error" style="min-height: 30px;">
+                    <span *ngIf="username?.invalid && username?.touched"> 
+                        <span *ngIf="username?.errors?.['required']">Username is required.</span>
+                        <span *ngIf="username?.errors?.['email']">Enter valid Email.</span>
+                    </span>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" formControlName="password" placeholder="Enter Password here">
+                <div class="display-error" style="min-height: 50px;">
+                    <span *ngIf="password?.invalid && password?.touched" > 
+                        <span *ngIf="password?.errors?.['required']">Password is required.</span>
+                        <span *ngIf="password?.errors?.['minlength'] && !password?.errors?.['required']">
+                            password should contain atleast 8 characters.
+                        </span>
+                        <span *ngIf="password?.errors?.['pattern'] && !password?.errors?.['minlength'] && !password?.errors?.['required']">
+                            password should contain atleast one uppercase, one number,one special character.
+                        </span>
+                    </span>
+                </div>                
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+        <div [class.visibility]="errorMessage" class="error-message">
+            <span *ngIf="errorMessage"> 
+                {{ errorMessage }} 
+            </span>
+        </div>   
+        <div>     
+            <p>Forgot Username or Password ?</p>
+            <button (click)="Forgot()" class="btn btn-warning btn-sm">Forgot</button>
+            
+            <p>If you dont have an account please register</p>
+            <button (click)="Register()" class="btn btn-outline-primary btn-sm">Register</button>
+        </div>
+    </div>
+</div>

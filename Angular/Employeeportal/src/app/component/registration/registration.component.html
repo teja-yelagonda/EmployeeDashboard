@@ -1,0 +1,23 @@
+<h1>Registration</h1>
+
+<input [(ngModel)]="FirstName" placeholder="FirstName">
+<input [(ngModel)]="LastName" placeholder="LastName">
+<!-- <input matInput [matdatepicker]="picker" [(ngModel)]="DOB" placeholder="DOB"> -->
+<mat-form-field appearance="fill"> 
+    <mat-label>Date of Birth</mat-label> 
+    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" [(ngModel)]="DOB"> 
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+    <mat-datepicker #picker></mat-datepicker> 
+</mat-form-field>
+<input [(ngModel)]="Gender" placeholder="Gender">
+<input [(ngModel)]="Email" placeholder="Email">
+<input [(ngModel)]="PhoneNumber" placeholder="PhoneNumber">
+<input [(ngModel)]="Address" placeholder="Address">
+<input [(ngModel)]="password" placeholder="Password">
+<input [(ngModel)]="ConfirmPassword" placeholder="ConfirmPassword">
+
+<button (click)="Register()" [disabled]="!FirstName || !LastName || !DOB || !Gender || !Email || !PhoneNumber || !Address || !password || !ConfirmPassword">Register</button>
+
+<h6>If already existing user please login</h6>
+<button (click)="Login()">Login</button>
+<p *ngIf="errorMessage">{{errorMessage}}</p>

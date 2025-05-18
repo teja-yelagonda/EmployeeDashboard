@@ -1,0 +1,6 @@
+<div>    
+    <h1>Welcome to Our Organizations</h1>
+    <router-outlet></router-outlet>
+    <button *ngIf="authService.isLoggedin()" (click)="logout()">Logout</button>
+    <!-- <app-employee></app-employee> -->
+</div>
